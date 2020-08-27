@@ -30,9 +30,10 @@ public class TouchMole : MonoBehaviour
                 if (hit.collider.CompareTag("MoleHead"))
                 {
                     Destroy(hit.collider.transform.parent.gameObject);
-                    touchNum++;
+                    UITextManager.Instance.AddTouchNum();
                 }
             }
         }
     }
+
 }

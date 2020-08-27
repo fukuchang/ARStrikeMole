@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mole
+  - MoleHead
   layers:
   - Default
   - TransparentFX
