@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchMole : MonoBehaviour
+[RequireComponent(typeof(Camera))]
+public abstract class TouchMole : MonoBehaviour
 {
     private Camera arCamera;
-    private int touchNum;
 
     // Start is called before the first frame update
     void Start()
@@ -13,8 +13,7 @@ public class TouchMole : MonoBehaviour
         arCamera = GetComponent<Camera>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void JudgeTouch()
     {
         if (Input.touchCount > 0)
         {
@@ -27,13 +26,17 @@ public class TouchMole : MonoBehaviour
             }
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.CompareTag("MoleHead"))
-                {
-                    Destroy(hit.collider.transform.parent.gameObject);
-                    UITextManager.Instance.AddTouchNum();
-                }
+                RaycastHitJudge("MoleHead", hit);
             }
         }
     }
 
+    public virtual void RaycastHitJudge(string tag, RaycastHit hit)
+    {
+        if (hit.collider.CompareTag(tag))
+        {
+            Destroy(hit.collider.transform.parent.gameObject);
+            UITextManager.Instance.AddTouchNum();
+        }
+    }
 }

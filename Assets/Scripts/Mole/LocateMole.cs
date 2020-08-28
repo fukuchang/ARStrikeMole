@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
+[RequireComponent(typeof(ARRaycastManager))]
 public class LocateMole : MonoBehaviour
 {
     [SerializeField] protected GameObject mole;
