@@ -26,14 +26,14 @@ public abstract class TouchMole : MonoBehaviour
             }
             if (Physics.Raycast(ray, out hit))
             {
-                RaycastHitJudge("MoleHead", hit);
+                RaycastHitJudge(hit);
             }
         }
     }
 
-    public virtual void RaycastHitJudge(string tag, RaycastHit hit)
+    public virtual void RaycastHitJudge(RaycastHit hit)
     {
-        if (hit.collider.CompareTag(tag))
+        if (hit.collider.CompareTag("MoleHead"))
         {
             Destroy(hit.collider.transform.parent.gameObject);
             UITextManager.Instance.AddTouchNum();
