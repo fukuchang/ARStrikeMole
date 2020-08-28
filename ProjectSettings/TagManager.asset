@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mole
   - MoleHead
+  - StartMole
   layers:
   - Default
   - TransparentFX
