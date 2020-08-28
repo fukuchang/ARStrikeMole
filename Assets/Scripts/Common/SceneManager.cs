@@ -17,6 +17,10 @@ namespace CommonScript
             UnityEngine.SceneManagement.SceneManager.LoadScene(SettingScene.GAME_SCENE);
         }
 
+        public static void GameReturnPhase()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SettingScene.START_SCENE);
+        }
     }
 
 }
