@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace CommonScript
+﻿namespace CommonScript
 {
     public static class SettingNum
     {
