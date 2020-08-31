@@ -2,9 +2,8 @@
 
 public class StartTouchMole : TouchMole
 {
-    public override void RaycastHitJudge(RaycastHit hit)
+    public override void OriginalFunction()
     {
-        Destroy(hit.collider.transform.parent.gameObject);
         CommonScript.SceneManager.GameStartPhase();
     }
 
