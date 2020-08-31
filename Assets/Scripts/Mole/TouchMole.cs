@@ -32,9 +32,13 @@ public abstract class TouchMole : MonoBehaviour
         }
     }
 
-    public virtual void RaycastHitJudge(RaycastHit hit)
+    private void RaycastHitJudge(RaycastHit hit)
     {
+        var explosion = Resources.Load("Prefab/Effects/Explosion") as GameObject;
+        Instantiate(explosion, hit.transform.position, Quaternion.identity);
         Destroy(hit.collider.transform.parent.gameObject);
-        UITextManager.Instance.AddTouchNum();
+        OriginalFunction();
     }
+
+    public abstract void OriginalFunction();
 }
