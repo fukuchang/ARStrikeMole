@@ -5,6 +5,8 @@ using UnityEngine.XR.ARSubsystems;
 
 public class AutoLoacateMole : LocateMole
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,7 @@ public class AutoLoacateMole : LocateMole
     // Update is called once per frame
     void Update()
     {
-        if(raycastManager.Raycast(centerPos, raycastHits, TrackableType.All) && isLocate)
+        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && isLocate)
         {
             isLocate = false;
             StartCoroutine(LocateMole());
@@ -27,5 +29,31 @@ public class AutoLoacateMole : LocateMole
     {
         yield return new WaitForSeconds(2.0f);
         isLocate = true;
+    }
+
+    private Vector3 RandomPos()
+    {
+        var range = Random.Range(-100, 100);
+
+        var rand = Random.Range(0, 10);
+        switch (rand)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                return new Vector3(0, Screen.height / 2 + range, 0);
+            case 4:
+            case 5:
+            case 6:
+            case 7:            
+                return new Vector3(Screen.width, Screen.height / 2 + range, 0);
+            case 8:
+            case 9:
+                return centerPos;
+            default:
+                return centerPos;
+                break;
+        }
     }
 }
