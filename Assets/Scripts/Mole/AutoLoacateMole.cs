@@ -19,11 +19,11 @@ public class AutoLoacateMole : LocateMole
     void Update()
     {
         var vec = RandomPos();
-        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isLocate || SpawnManager.IsExtendLocate))
+        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isLocate/* || SpawnManager.IsExtendLocate*/))
         {
             recogText.text = vec.x.ToString();
             if (isLocate) isLocate = false;
-            if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
+            // if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
 
             StartCoroutine(LocateMole());
             StartCoroutine(GenerateMoleCoroutine(mole, raycastHits[0].pose, 2.0f));
@@ -32,7 +32,7 @@ public class AutoLoacateMole : LocateMole
 
     private IEnumerator LocateMole()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         isLocate = true;
     }
 
@@ -45,17 +45,16 @@ public class AutoLoacateMole : LocateMole
         {
             case 0:
             case 1:
-                return new Vector3(0, Screen.height / 2 + range, 0);
             case 2:
+                return new Vector3(0, Screen.height / 2 + range, 0);
             case 3:
             case 4:
             case 5:
             case 6:
             case 7:
-                return new Vector3(Screen.width, Screen.height / 2 + range, 0);
             case 8:
             case 9:
-                return centerPos;
+                return new Vector3(Screen.width, Screen.height / 2 + range, 0);
             default:
                 return centerPos;
         }
