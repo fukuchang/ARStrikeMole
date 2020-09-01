@@ -4,11 +4,15 @@
 public abstract class TouchMole : MonoBehaviour
 {
     private Camera arCamera;
+    private GameObject explosion;
+    private GameObject hummerSound;
 
     // Start is called before the first frame update
     void Start()
     {
         arCamera = GetComponent<Camera>();
+        explosion = Resources.Load("Prefab/Effects/Explosion") as GameObject;
+        hummerSound = Resources.Load("Prefab/SEObject/HummerSound") as GameObject;
     }
 
     protected void JudgeTouch()
@@ -34,8 +38,8 @@ public abstract class TouchMole : MonoBehaviour
 
     private void RaycastHitJudge(RaycastHit hit)
     {
-        var explosion = Resources.Load("Prefab/Effects/Explosion") as GameObject;
         Instantiate(explosion, hit.transform.position, Quaternion.identity);
+        Instantiate(hummerSound, hit.transform.position, Quaternion.identity);
         Destroy(hit.collider.transform.parent.gameObject);
         OriginalFunction();
     }
