@@ -5,7 +5,7 @@ public class InGameTouchMole : TouchMole
 {
     public override void OriginalFunction()
     {
-        StartCoroutine(SpawnLatancy());
+        // StartCoroutine(SpawnLatancy());
         UITextManager.Instance.AddTouchNum();
     }
 
