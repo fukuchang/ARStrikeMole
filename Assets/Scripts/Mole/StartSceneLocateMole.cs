@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -18,7 +17,7 @@ public class StartSceneLocateMole : LocateMole
     // Update is called once per frame
     void Update()
     {
-        if (isGenerate)
+        if (StartUITextManager.Instance.isGenerate)
         {
             StartUITextManager.Instance.ChangeAnnouceText("もぐらをタッチしてスタート!");
             return;
@@ -32,7 +31,15 @@ public class StartSceneLocateMole : LocateMole
         }
         else
         {
-            StartUITextManager.Instance.ChangeAnnouceText("画面を固定してください");
+            StartUITextManager.Instance.ChangeAnnouceText("画面をゆっくり上下左右に動かしてください");
         }
+    }
+
+    public override IEnumerator GenerateMoleCoroutine(GameObject obj, Pose pose, float time)
+    {
+        yield return new WaitForSeconds(time);
+        var moleObj = Instantiate(obj, pose.position, pose.rotation) as GameObject;
+        StartUITextManager.Instance.VisibleRestart(moleObj);
+        isLocate = true;
     }
 }

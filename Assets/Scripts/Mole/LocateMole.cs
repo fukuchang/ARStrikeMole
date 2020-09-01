@@ -13,7 +13,7 @@ public class LocateMole : MonoBehaviour
 
     protected bool isLocate = false;
 
-    protected IEnumerator GenerateMoleCoroutine(GameObject obj, Pose pose, float time)
+    public virtual IEnumerator GenerateMoleCoroutine(GameObject obj, Pose pose, float time)
     {
         yield return new WaitForSeconds(time);
         Instantiate(obj, pose.position, pose.rotation);
