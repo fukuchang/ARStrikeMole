@@ -12,16 +12,19 @@ public class AutoLoacateMole : LocateMole
     void Start()
     {
         raycastManager = GetComponent<ARRaycastManager>();
+        isLocate = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         var vec = RandomPos();
-        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && isLocate)
+        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isLocate || SpawnManager.IsExtendLocate))
         {
             recogText.text = vec.x.ToString();
-            isLocate = false;
+            if (isLocate) isLocate = false;
+            if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
+
             StartCoroutine(LocateMole());
             StartCoroutine(GenerateMoleCoroutine(mole, raycastHits[0].pose, 2.0f));
         }
@@ -29,13 +32,13 @@ public class AutoLoacateMole : LocateMole
 
     private IEnumerator LocateMole()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2f);
         isLocate = true;
     }
 
     private Vector3 RandomPos()
     {
-        var range = Random.Range(-200, 0);
+        var range = Random.Range(-150f, 0f);
 
         var rand = Random.Range(0, 10);
         switch (rand)
