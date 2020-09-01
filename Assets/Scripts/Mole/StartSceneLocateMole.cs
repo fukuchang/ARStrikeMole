@@ -29,7 +29,7 @@ public class StartSceneLocateMole : LocateMole
         }
         else
         {
-            StartUITextManager.Instance.ChangeAnnouceText("画面を固定してください");
+            StartUITextManager.Instance.ChangeAnnouceText("画面をゆっくり上下左右に動かしてください");
         }
     }
 }
