@@ -12,7 +12,6 @@ public class AutoLoacateMole : LocateMole
     void Start()
     {
         raycastManager = GetComponent<ARRaycastManager>();
-        StartCoroutine(LocateMole());
     }
 
     // Update is called once per frame
@@ -36,7 +35,7 @@ public class AutoLoacateMole : LocateMole
 
     private Vector3 RandomPos()
     {
-        var range = Random.Range(-100, 100);
+        var range = Random.Range(-200, 0);
 
         var rand = Random.Range(0, 10);
         switch (rand)
