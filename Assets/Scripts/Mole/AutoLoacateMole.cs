@@ -6,7 +6,7 @@ using UnityEngine.XR.ARSubsystems;
 
 public class AutoLoacateMole : LocateMole
 {
-    [SerializeField] private Text recogText;
+    //[SerializeField] private Text recogText;
     [SerializeField] private GameObject goldMole;
 
     private bool isGoldLocate;
@@ -25,7 +25,7 @@ public class AutoLoacateMole : LocateMole
         var vec = RandomPos();
         if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isLocate))
         {
-            recogText.text = vec.x.ToString();
+            //recogText.text = vec.x.ToString();
             if (isLocate) isLocate = false;
             // if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
 
@@ -35,7 +35,7 @@ public class AutoLoacateMole : LocateMole
 
         if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isGoldLocate))
         {
-            recogText.text = vec.x.ToString();
+            //recogText.text = vec.x.ToString();
             if (isGoldLocate) isGoldLocate = false;
             // if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
 

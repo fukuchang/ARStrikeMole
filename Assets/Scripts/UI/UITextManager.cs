@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UITextManager : SingletonMonoBehaviour<UITextManager>
 {
-    [SerializeField] private Text touchNumText;
-    [SerializeField] private Text timeLimitText;
+    [SerializeField] private TextMeshProUGUI touchNumText;
+    [SerializeField] private TextMeshProUGUI timeLimitText;
 
     private int touchNum;
     [SerializeField] private int timeLimit;
@@ -17,17 +18,25 @@ public class UITextManager : SingletonMonoBehaviour<UITextManager>
         StartCoroutine(StartCountDown());
     }
 
+    private void Update()
+    {
+        if (time < 10f)
+        {
+            timeLimitText.faceColor = new Color32(253, 49, 60, 255);
+        }
+    }
+
     public void AddTouchNum(int num)
     {
         touchNum += num;
-        touchNumText.text = "TouchNum: " + touchNum.ToString();
+        touchNumText.text = "Score: " + touchNum.ToString();
     }
 
     private IEnumerator StartCountDown()
     {
         yield return new WaitForSeconds(1);
         time--;
-        timeLimitText.text = "TimeLimit:" + time.ToString();
+        timeLimitText.text = "Time:" + time.ToString();
         if (time > 0)
         {
             StartCoroutine(StartCountDown());
