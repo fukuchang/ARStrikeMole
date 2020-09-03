@@ -6,34 +6,54 @@ using UnityEngine.XR.ARSubsystems;
 
 public class AutoLoacateMole : LocateMole
 {
-    [SerializeField] private Text recogText;
+    //[SerializeField] private Text recogText;
+    [SerializeField] private GameObject goldMole;
+
+    private bool isGoldLocate;
 
     // Start is called before the first frame update
     void Start()
     {
         raycastManager = GetComponent<ARRaycastManager>();
         isLocate = true;
+        isGoldLocate = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         var vec = RandomPos();
-        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isLocate/* || SpawnManager.IsExtendLocate*/))
+        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isLocate))
         {
-            recogText.text = vec.x.ToString();
+            //recogText.text = vec.x.ToString();
             if (isLocate) isLocate = false;
             // if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
 
-            StartCoroutine(LocateMole());
+            StartCoroutine(LocateMole(1.5f));
             StartCoroutine(GenerateMoleCoroutine(mole, raycastHits[0].pose, 2.0f));
+        }
+
+        if (raycastManager.Raycast(RandomPos(), raycastHits, TrackableType.All) && (isGoldLocate))
+        {
+            //recogText.text = vec.x.ToString();
+            if (isGoldLocate) isGoldLocate = false;
+            // if (SpawnManager.IsExtendLocate) SpawnManager.IsExtendLocate = false;
+
+            StartCoroutine(LocateGoldMole(15f));
+            StartCoroutine(GenerateMoleCoroutine(goldMole, raycastHits[0].pose, 10.0f));
         }
     }
 
-    private IEnumerator LocateMole()
+    private IEnumerator LocateMole(float _time)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(_time);
         isLocate = true;
+    }
+
+    private IEnumerator LocateGoldMole(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        isGoldLocate = true;
     }
 
     private Vector3 RandomPos()
