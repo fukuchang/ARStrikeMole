@@ -198,6 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mole: {fileID: 6073203202564918890, guid: 41d0e1c5eb402460c8573696c835db87, type: 3}
   recogText: {fileID: 1531574472}
+  goldMole: {fileID: 6073203202564918890, guid: 79ebde4082d7748d68d23cb526f5e245,
+    type: 3}
 --- !u!1 &208002309
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1531574471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -771,7 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchNumText: {fileID: 2138842656}
   timeLimitText: {fileID: 377164510}
-  timeLimit: 30
+  timeLimit: 60
 --- !u!114 &1726138483
 MonoBehaviour:
   m_ObjectHideFlags: 0

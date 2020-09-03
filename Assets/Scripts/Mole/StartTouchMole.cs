@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class StartTouchMole : TouchMole
 {
-    public override void OriginalFunction()
+    public override void OriginalFunction(string tag)
     {
         StartCoroutine(StartLatancy());
     }

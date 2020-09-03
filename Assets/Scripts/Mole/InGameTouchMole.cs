@@ -3,10 +3,21 @@ using UnityEngine;
 
 public class InGameTouchMole : TouchMole
 {
-    public override void OriginalFunction()
+    public override void OriginalFunction(string tag)
     {
         // StartCoroutine(SpawnLatancy());
-        UITextManager.Instance.AddTouchNum();
+        switch (tag)
+        {
+            case "Mole":
+                UITextManager.Instance.AddTouchNum(1);
+                break;
+            case "GoldMole":
+                UITextManager.Instance.AddTouchNum(3);
+                break;
+            default:
+                UITextManager.Instance.AddTouchNum(1);
+                break;
+        }
     }
 
     private IEnumerator SpawnLatancy()
