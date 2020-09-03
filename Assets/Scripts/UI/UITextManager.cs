@@ -17,9 +17,9 @@ public class UITextManager : SingletonMonoBehaviour<UITextManager>
         StartCoroutine(StartCountDown());
     }
 
-    public void AddTouchNum()
+    public void AddTouchNum(int num)
     {
-        touchNum++;
+        touchNum += num;
         touchNumText.text = "TouchNum: " + touchNum.ToString();
     }
 

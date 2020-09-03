@@ -41,8 +41,8 @@ public abstract class TouchMole : MonoBehaviour
         Instantiate(explosion, hit.transform.position, Quaternion.identity);
         Instantiate(hummerSound, hit.transform.position, Quaternion.identity);
         Destroy(hit.collider.transform.parent.gameObject);
-        OriginalFunction();
+        OriginalFunction(hit.collider.transform.parent.gameObject.tag);
     }
 
-    public abstract void OriginalFunction();
+    public abstract void OriginalFunction(string tag);
 }

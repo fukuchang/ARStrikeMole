@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 2506375312071155877}
   m_Layer: 0
   m_Name: Mole_Gold
-  m_TagString: Mole
+  m_TagString: GoldMole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
