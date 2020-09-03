@@ -43,6 +43,7 @@ public class UITextManager : SingletonMonoBehaviour<UITextManager>
         }
         else
         {
+            CommonScript.ScoreManager.SaveScore(touchNum);
             CommonScript.SceneManager.GameOverPhase();
             yield return null;
         }

@@ -16,6 +16,7 @@ public class StartTouchMole : TouchMole
     private IEnumerator StartLatancy()
     {
         yield return new WaitForSeconds(1.0f);
+        CommonScript.ScoreManager.ResetScore();
         CommonScript.SceneManager.GameStartPhase();
     }
 }
