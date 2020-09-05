@@ -3,7 +3,7 @@
 実空間上に出てくるモグラを画面タップして倒すゲームです。
 実空間の形状に則して出てくるので壁や特徴的な形をしている場所からは垂直に出てくるとは限りません。
 
-![demo](https://raw.github.com/wiki/fukuchang/ARStrikeMole/images/output.gif)
+![demo](https://user-images.githubusercontent.com/35944165/92303780-22c8f080-efb3-11ea-9eb7-626361de5323.gif)
 
 ## 対応機種
 - Android ver8.0以上
