@@ -11,7 +11,9 @@
 
 ## 使用技術
 - 使用ソフトウェア
-  - Unity（Version 2020.1.2f）
+  - Unity（Version 2020.1.4f or later versions）
 - 使用SDK
-  - ARFoundation (preview )
+  - ARFoundation (version4.1.0-preview6)
     - Depth APIを使用
+  - ARCore XR Plugin (version4.1.0-preview6)
+    - Android実機ビルドするため
